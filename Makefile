@@ -102,7 +102,7 @@ kubeone: check-env kubeone-apply kubeone-kubeconfig kubeone-generate-workers kub
 .PHONY: kubeone-apply
 ## kubeone-apply: run KubeOne to deploy Kubernetes
 kubeone-apply:
-	kubeone apply -c ${CREDENTIALS_FILE} -m ${CONFIG_FILE} -t ${TERRAFORM_OUTPUT} --create-machine-deployments=false --auto-approve # --force-upgrade --verbose # --upgrade-machine-deployments
+	kubeone apply -c ${CREDENTIALS_FILE} -m ${CONFIG_FILE} -t ${TERRAFORM_OUTPUT} --create-machine-deployments=false --auto-approve --verbose # --force-upgrade --verbose # --upgrade-machine-deployments
 
 .PHONY: kubeone-kubeconfig
 ## kubeone-kubeconfig: write kubeconfig file

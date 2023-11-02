@@ -2,7 +2,7 @@
   "external_ip": {
     "sensitive": false,
     "type": "string",
-    "value": "164.128.161.20"
+    "value": "164.128.146.156"
   },
   "kubeone_api": {
     "sensitive": false,
@@ -20,9 +20,9 @@
     ],
     "value": {
       "apiserver_alternative_names": [
-        "kubeone-demo.kube-plus.cloud"
+        "kubeone-dev.kube-plus.cloud"
       ],
-      "endpoint": "kubeone-demo.kube-plus.cloud"
+      "endpoint": "kubeone-dev.kube-plus.cloud"
     }
   },
   "kubeone_hosts": {
@@ -66,15 +66,15 @@
     ],
     "value": {
       "control_plane": {
-        "bastion": "164.128.161.20",
+        "bastion": "164.128.146.156",
         "bastion_port": 2222,
         "bastion_user": "ubuntu",
         "cloud_provider": "vmwareCloudDirector",
-        "cluster_name": "kubeone",
+        "cluster_name": "kubeone-dev",
         "hostnames": [
-          "kubeone-cp-1",
-          "kubeone-cp-2",
-          "kubeone-cp-3"
+          "kubeone-dev-cp-1",
+          "kubeone-dev-cp-2",
+          "kubeone-dev-cp-3"
         ],
         "private_address": [
           "192.168.1.10",
@@ -86,7 +86,7 @@
         "ssh_private_key_file": "ssh_key_id_rsa",
         "ssh_user": "ubuntu",
         "storage_profile": "Ultra Fast Storage A with Backup",
-        "vapp_name": "kubeone"
+        "vapp_name": "kubeone-dev"
       }
     }
   },
@@ -95,7 +95,7 @@
     "type": [
       "object",
       {
-        "kubeone-worker-pool": [
+        "kubeone-dev-worker-pool": [
           "object",
           {
             "providerSpec": [
@@ -163,7 +163,7 @@
       }
     ],
     "value": {
-      "kubeone-worker-pool": {
+      "kubeone-dev-worker-pool": {
         "providerSpec": {
           "annotations": {
             "cluster.k8s.io/cluster-api-autoscaler-node-group-max-size": "5",
@@ -172,20 +172,20 @@
           },
           "cloudProviderSpec": {
             "allowInsecure": false,
-            "catalog": "KubeOne",
+            "catalog": "KubeOne DEV",
             "cpuCores": 1,
-            "cpus": 4,
-            "diskSizeGB": 250,
+            "cpus": 2,
+            "diskSizeGB": 100,
             "ipAllocationMode": "DHCP",
-            "memoryMB": 8192,
+            "memoryMB": 4096,
             "metadata": {
-              "KubeOneCluster": "kubeone"
+              "KubeOneCluster": "kubeone-dev"
             },
-            "network": "kubeone-routed-network",
+            "network": "kubeone-dev-routed-network",
             "organization": "PRO-005019247",
             "storageProfile": "Ultra Fast Storage A",
             "template": "Ubuntu 20.04 Server",
-            "vapp": "kubeone",
+            "vapp": "kubeone-dev",
             "vdc": "kubernetes-demo"
           },
           "machineObjectAnnotations": {
@@ -199,7 +199,7 @@
             "distUpgradeOnBoot": false
           },
           "sshPublicKeys": [
-            "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2QKTfntKlsoo4ELBZgBLvIshQht2hzaQ7AGmJU2cxnt6cen7mwkqHkYA+ZoBBSi5DxcAGv1M5PX7ICiW8vdkHjStQzLXvXeov7YYKR9+WXBPhw5MF6O/PqW30Vf40EnRWdr0mlTcm/8BYai4DyJDNLayOxkefsVfhUDw42/nWK2uHEA/RzCLrYQhp4A6fP2YWXoGWNHzHuOfY1rea+TZkDStPcJQj07Qlvqpb9wk7O9VxaaxcsJbHQDpFzW4nWFYzb2AJUBbnQZoRDlx0GAYSVyEPXRIL7mpTUHKyZeLD5b46xvWyhynMGOfMChtihGX2ITdidLzd5WXs162pt0rhf/Y0aAwbgDN0R1UfS8l7dLiNojj4sZcZ717eEjaCGZUKBeNftHvKnF+G8YZHB3eOR2ryoNT2S5ZlwabJiOrP3V51us2KMlkvdeI81VeVLU+C39MY/jGipAkIsQil+XKLtw7HVSEZ+gH/3MmFeGrOM5wbiIatum15J0IGxGTma+E= admin@kubernetes\n"
+            "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCipOCiyYaAXFDGY4F6bDuafSBax+iXEID338Mms7movZvv37DVYOktbCx0OyoWoYNXmm1w3s7MqqnEQYtYzB/qNWRkm2dBTRqvw8bMuvEa0srfo5sX/g7EuljsvpKG7rYoZXNk7+7lU7Bx4RRi2K7fKrQ8e30Mi9yjai3QHK5G8NTo0gapzdReb9NiTPofW39G3jm7U2B5gqzpbleUyrxfuNEv6iyayR7UXLcgCeEPH0vAhnXKnPgFSSL0dO8FbDUXvWCZlNmkDG8c18iRSfclHDqG2y9Nw7bd2sQnGM/z3mrAdlVlWgj9Vtx2OC/xGB1dBLwRuukiOT9rDGN/f4U+f2hwXgIr8LWVfKJqYbXf8ICePdw1O+iA9pDqIj7T3CbSumqL4+cmmZhea7Xp7Udy9Bf83Zl0NIibu6oidD/UNCcD9zCkdkHKAY28jZq4qSgHRA31hB25Fk2PpSHDdmGI2IyaGx8V4N92J4f5nYD/CkVDVLxmtcBD+FgXrwzResEJR0ftn9xjjP+SmE8iiW7MwqRil86EOsaQ0Po3vG2x7JTsQJrxwhf2nC2v6dhcaLjTsl6BwOq95+JzRHrniOhXe2sIl4AZRdKwjxADUYU0f7IiH5Ef+BwA8n5jMG0P5fha/S0BQhbhhvwvlb3UZGlirzTjFytdPQ/yz/ouhN+iFQ== tgdbefa3@ULXGWP007\n"
           ]
         },
         "replicas": 3
