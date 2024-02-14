@@ -6,14 +6,14 @@ metadata:
     cluster.k8s.io/cluster-api-autoscaler-node-group-min-size: "3"
     k8c.io/operating-system-profile: osp-ubuntu
   creationTimestamp: null
-  name: kubeone-dev-worker-pool
+  name: kubeone-worker-pool
   namespace: kube-system
 spec:
   minReadySeconds: 0
   replicas: 3
   selector:
     matchLabels:
-      workerset: kubeone-dev-worker-pool
+      workerset: kubeone-worker-pool
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -28,38 +28,38 @@ spec:
         v1.kubelet-config.machine-controller.kubermatic.io/SystemReserved: cpu=200m,memory=200Mi
       creationTimestamp: null
       labels:
-        workerset: kubeone-dev-worker-pool
+        workerset: kubeone-worker-pool
       namespace: kube-system
     spec:
       metadata:
         creationTimestamp: null
         labels:
-          workerset: kubeone-dev-worker-pool
+          workerset: kubeone-worker-pool
       providerSpec:
         value:
           cloudProvider: vmware-cloud-director
           cloudProviderSpec:
             allowInsecure: false
-            catalog: KubeOne DEV
+            catalog: KubeOne
             cpuCores: 1
-            cpus: 2
-            diskSizeGB: 100
+            cpus: 4
+            diskSizeGB: 250
             ipAllocationMode: DHCP
-            memoryMB: 4096
+            memoryMB: 8192
             metadata:
-              KubeOneCluster: kubeone-dev
-            network: kubeone-dev-routed-network
+              KubeOneCluster: kubeone
+            network: kubeone-routed-network
             organization: PRO-005019247
             storageProfile: Ultra Fast Storage A
             template: Ubuntu 22.04 Server
-            vapp: kubeone-dev
+            vapp: kubeone
             vdc: kubernetes-demo
           operatingSystem: ubuntu
           operatingSystemSpec:
             distUpgradeOnBoot: false
           sshPublicKeys:
           - |
-            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCipOCiyYaAXFDGY4F6bDuafSBax+iXEID338Mms7movZvv37DVYOktbCx0OyoWoYNXmm1w3s7MqqnEQYtYzB/qNWRkm2dBTRqvw8bMuvEa0srfo5sX/g7EuljsvpKG7rYoZXNk7+7lU7Bx4RRi2K7fKrQ8e30Mi9yjai3QHK5G8NTo0gapzdReb9NiTPofW39G3jm7U2B5gqzpbleUyrxfuNEv6iyayR7UXLcgCeEPH0vAhnXKnPgFSSL0dO8FbDUXvWCZlNmkDG8c18iRSfclHDqG2y9Nw7bd2sQnGM/z3mrAdlVlWgj9Vtx2OC/xGB1dBLwRuukiOT9rDGN/f4U+f2hwXgIr8LWVfKJqYbXf8ICePdw1O+iA9pDqIj7T3CbSumqL4+cmmZhea7Xp7Udy9Bf83Zl0NIibu6oidD/UNCcD9zCkdkHKAY28jZq4qSgHRA31hB25Fk2PpSHDdmGI2IyaGx8V4N92J4f5nYD/CkVDVLxmtcBD+FgXrwzResEJR0ftn9xjjP+SmE8iiW7MwqRil86EOsaQ0Po3vG2x7JTsQJrxwhf2nC2v6dhcaLjTsl6BwOq95+JzRHrniOhXe2sIl4AZRdKwjxADUYU0f7IiH5Ef+BwA8n5jMG0P5fha/S0BQhbhhvwvlb3UZGlirzTjFytdPQ/yz/ouhN+iFQ== tgdbefa3@ULXGWP007
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2QKTfntKlsoo4ELBZgBLvIshQht2hzaQ7AGmJU2cxnt6cen7mwkqHkYA+ZoBBSi5DxcAGv1M5PX7ICiW8vdkHjStQzLXvXeov7YYKR9+WXBPhw5MF6O/PqW30Vf40EnRWdr0mlTcm/8BYai4DyJDNLayOxkefsVfhUDw42/nWK2uHEA/RzCLrYQhp4A6fP2YWXoGWNHzHuOfY1rea+TZkDStPcJQj07Qlvqpb9wk7O9VxaaxcsJbHQDpFzW4nWFYzb2AJUBbnQZoRDlx0GAYSVyEPXRIL7mpTUHKyZeLD5b46xvWyhynMGOfMChtihGX2ITdidLzd5WXs162pt0rhf/Y0aAwbgDN0R1UfS8l7dLiNojj4sZcZ717eEjaCGZUKBeNftHvKnF+G8YZHB3eOR2ryoNT2S5ZlwabJiOrP3V51us2KMlkvdeI81VeVLU+C39MY/jGipAkIsQil+XKLtw7HVSEZ+gH/3MmFeGrOM5wbiIatum15J0IGxGTma+E= admin@kubernetes
       versions:
         kubelet: 1.27.10
 status: {}
