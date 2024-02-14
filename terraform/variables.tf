@@ -140,13 +140,13 @@ variable "catalog_name" {
 
 variable "template_name" {
   description = "Name of the vApp template to use"
-  default     = "Ubuntu 20.04 Server"
+  default     = "Ubuntu 22.04 Server"
   type        = string
 }
 
 variable "os_image_url" {
   description = "URL of the OS image to upload"
-  default     = "https://dcs-kubernetes.scapp.swisscom.com/ubuntu-20.04-server-cloudimg-amd64.ovf"
+  default     = "https://dcs-kubernetes.scapp.swisscom.com/ubuntu-22.04-server-cloudimg-amd64.ovf"
   type        = string
 }
 

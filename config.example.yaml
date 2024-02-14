@@ -1,7 +1,7 @@
 ---
 kubernetes:
   hostname: "my-kubernetes.my-domain.com" # adjust to your hostname, make sure you have a valid DNS records pointing to the edge gateway beforehand
-  version: "1.26.6"
+  version: "1.27.10"
   csi:
     storage_profile: "Ultra Fast Storage A" # adjust to a storage profile of your choice, see "VCD UI -> Data Centers -> Storage -> Storage Policies"
   oidc:
